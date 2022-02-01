@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_final_fields
 
 import 'package:flutter/material.dart';
-import 'package:shop/models/product.dart';
+import 'package:shop/provider/product.dart';
 
 //mixins are created using with
 class Products with ChangeNotifier {

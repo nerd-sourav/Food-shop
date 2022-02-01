@@ -14,9 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
+      // value: Products(),
       // use of provider
       // which is used at the heighest root level
-
+      // we can also use value
       create: (ctx) => Products(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

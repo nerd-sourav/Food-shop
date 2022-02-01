@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop/models/product.dart';
 import 'package:shop/provider/products.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -15,7 +14,10 @@ class ProductDetailsScreen extends StatelessWidget {
     //getting the data using only the ID's of the product
     //using state management system
 
-    final loadedProduct = Provider.of<Products>(context).findById(productID);
+    final loadedProduct = Provider.of<Products>(
+      context,
+      listen: false,
+    ).findById(productID);
 
     return Scaffold(
       appBar: AppBar(
