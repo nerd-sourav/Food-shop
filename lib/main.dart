@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/provider/cart.dart';
 import 'package:shop/provider/products.dart';
 import 'package:shop/screens/product_detail_screen.dart';
 import 'package:shop/screens/products_overview_screen.dart';
@@ -13,24 +14,32 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return MultiProvider(
       // value: Products(),
       // use of provider
       // which is used at the heighest root level
       // we can also use value
-      create: (ctx) => Products(),
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => Products(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Cart(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'MyShop',
         theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
           fontFamily: 'Lato',
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+              .copyWith(secondary: Colors.deepOrange),
         ),
-        home: ProductOverViewScreen(),
+        home: const ProductOverViewScreen(),
         routes: {
-          ProductOverViewScreen.routeName: (ctx) => ProductOverViewScreen(),
-          ProductDetailsScreen.routeName: (ctx) => ProductDetailsScreen(),
+          ProductOverViewScreen.routeName: (ctx) =>
+              const ProductOverViewScreen(),
+          ProductDetailsScreen.routeName: (ctx) => const ProductDetailsScreen(),
         },
       ),
     );

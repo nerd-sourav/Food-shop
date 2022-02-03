@@ -39,8 +39,19 @@ class Products with ChangeNotifier {
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),
   ];
+  // logic for displaying only the favoutire item;
+
+  bool _showFavouritesOnly = false;
+
   List<Product> get items {
+    if (_showFavouritesOnly) {
+      return _items.where((element) => element.isFavourite).toList();
+    }
     return [..._items]; //.._items returns the copy of the _items;
+  }
+
+  List<Product> get favouriteItems {
+    return _items.where((element) => element.isFavourite).toList();
   }
 
   // whenever this method is called it will notify all the listiners
