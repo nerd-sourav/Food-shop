@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop/provider/cart.dart';
+import 'package:shop/screens/cart_screen.dart';
 import 'package:shop/widgets/badge.dart';
 
 import 'package:shop/widgets/products_grid.dart';
@@ -57,7 +58,9 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
             builder: (_, cart, ch) => Badge(
               child: IconButton(
                 icon: const Icon(Icons.shopping_cart_outlined),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, CartScreen.routeName);
+                },
               ),
               value: cart.itemCount.toString(),
               color: Colors.orange,
