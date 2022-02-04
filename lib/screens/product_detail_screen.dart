@@ -20,12 +20,20 @@ class ProductDetailsScreen extends StatelessWidget {
     ).findById(productID);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(loadedProduct.title),
-      ),
-      body: Center(
-        child: Text(loadedProduct.description),
-      ),
-    );
+        appBar: AppBar(
+          title: Text(loadedProduct.title),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.center,
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height / 2,
+                child: Image.network(loadedProduct.imageUrl),
+              )
+            ],
+          ),
+        ));
   }
 }
