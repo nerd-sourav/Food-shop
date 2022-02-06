@@ -20,20 +20,39 @@ class ProductDetailsScreen extends StatelessWidget {
     ).findById(productID);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(loadedProduct.title),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.center,
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height / 2,
+      appBar: AppBar(
+        title: Text(loadedProduct.title),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(20),
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height / 2,
+              child: Hero(
+                tag: loadedProduct.id,
                 child: Image.network(loadedProduct.imageUrl),
-              )
-            ],
-          ),
-        ));
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              "\$${loadedProduct.price}",
+              style: TextStyle(fontSize: 30),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              loadedProduct.description,
+              style: TextStyle(fontSize: 15),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

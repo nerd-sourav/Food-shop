@@ -26,9 +26,12 @@ class ProductItem extends StatelessWidget {
               arguments: product.id,
             );
           },
-          child: Image.network(
-            product.imageUrl,
-            fit: BoxFit.cover,
+          child: Hero(
+            tag: product.id,
+            child: Image.network(
+              product.imageUrl,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         footer: Consumer<Product>(
@@ -49,7 +52,7 @@ class ProductItem extends StatelessWidget {
                 onPressed: () {
                   cart.addItem(product.id, product.title, product.price);
                 },
-                icon: const Icon(Icons.shopping_cart),
+                icon: const Icon(Icons.shopping_cart_outlined),
               ),
               backgroundColor: Colors.black38,
               title: Text(

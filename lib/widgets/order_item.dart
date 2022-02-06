@@ -16,7 +16,7 @@ class OrderItem extends StatelessWidget {
         children: [
           ListTile(
             title: Text('\$${order.amount}'),
-            subtitle:   ,
+            //subtitle:   ,
           )
         ],
       ),
