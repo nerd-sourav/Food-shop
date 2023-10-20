@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:shop/provider/products.dart';
+import 'package:shop/providers/products.dart';
 import 'package:shop/widgets/product_item.dart';
 
 class ProductsGrid extends StatelessWidget {
@@ -14,9 +14,9 @@ class ProductsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //provider sets up a direct communication channel btwn the listiners;
-    // procider can only be added whose parent class is directly or indirectly
-    // connected to the Provider i.e ChangeNotifierProvider in main.dart file
+    // Provider sets up a direct communication channel between the listeners.
+    // Provider can only be added to a parent class that is directly or indirectly
+    // connected to the Provider, i.e., ChangeNotifierProvider in the main.dart file.
 
     final productsData = Provider.of<Products>(context);
     final products =
@@ -33,12 +33,12 @@ class ProductsGrid extends StatelessWidget {
       itemCount: products.length,
       itemBuilder: (BuildContext context, int index) {
         return ChangeNotifierProvider.value(
-            value: products[index], child: const ProductItem()
-            // id: products[index].id,
-            // title: products[index].title,
-            // imageUrl: products[index].imageUrl,
-
-            );
+          value: products[index],
+          child: const ProductItem(),
+          // id: products[index].id,
+          // title: products[index].title,
+          // imageUrl: products[index].imageUrl,
+        );
       },
     );
   }
